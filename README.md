@@ -10,7 +10,7 @@ A fast, fun AR web useless game where your face flies inside an authentic Red Bu
 
 
 
-Visit 'https://gouthamplayz.github.io/Red-Bull-Can-Flyer/` in your browser.
+Visit https://gouthamplayz.github.io/Red-Bull-Can-Flyer/ in your browser.
 ```
 ---
 
