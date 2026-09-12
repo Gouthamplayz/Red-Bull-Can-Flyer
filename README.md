@@ -60,7 +60,7 @@ No dedicated hardware required
 Webcam/camera optional
 Runs directly in a modern web browser
 Implementation
-
+```
 For Software:
 
 The project is divided into multiple modules:
@@ -83,6 +83,8 @@ CAN FLYER/
 │   ├── rbc.png
 │   └── rbv.mp3
 └── README.md
+```
+
 Installation
 
 Clone the repository:
