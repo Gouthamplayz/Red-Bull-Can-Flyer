@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Red Bull Can Flyer | Gives You Wiiings</title>
+
+    <!-- Google Fonts: Barlow Condensed (Racing), Outfit & Space Grotesk -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Outfit:wght@400;600;700;800;900&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+
+<div id="app">
+
+    <!-- =========================
+         CAMERA / FLIGHT DECK SCREEN
+    ========================== -->
+    <section id="cameraScreen">
+        <!-- Ambient background lights -->
+        <div class="ambient-glow cyan"></div>
+        <div class="ambient-glow red"></div>
+        <div class="ambient-glow yellow"></div>
+
+        <div id="cameraCard">
+            <!-- Red Bull Racing Livery Top Stripe -->
+            <div class="card-racing-stripe"></div>
+
+            <!-- Header Badge -->
+            <div class="flight-badge">
+                <svg class="rb-mini-crest" viewBox="0 0 36 24" fill="none">
+                    <circle cx="18" cy="12" r="7" fill="#ffcc00"/>
+                    <path d="M2 7 C8 8, 12 10, 15 12 C11 12, 7 11, 3 9 Z" fill="#ea0029"/>
+                    <path d="M4 10 C9 11, 12 12, 15 14 C12 14, 8 14, 4 12 Z" fill="#ea0029"/>
+                    <path d="M34 7 C28 8, 24 10, 21 12 C25 12, 29 11, 33 9 Z" fill="#ea0029"/>
+                    <path d="M32 10 C27 11, 24 12, 21 14 C24 14, 28 14, 32 12 Z" fill="#ea0029"/>
+                </svg>
+                <span class="live-dot"></span>
+                <span>RED BULL FLIGHT LAB • AR WINGS</span>
+            </div>
+
+            <!-- Video Scanner Wrapper -->
+            <div id="videoContainer">
+                <video id="cameraVideo" autoplay playsinline muted></video>
+
+                <!-- Holographic Scanning Guide -->
+                <div id="cameraGuide">
+                    <div class="guide-ring-outer"></div>
+                    <div class="guide-crosshairs"></div>
+                    <div class="guide-scan-line"></div>
+                </div>
+
+                <div class="hud-corner top-left"></div>
+                <div class="hud-corner top-right"></div>
+                <div class="hud-corner bottom-left"></div>
+                <div class="hud-corner bottom-right"></div>
+
+                <div class="hud-status-chip">
+                    <span class="hud-icon">🎯</span>
+                    <span id="scannerStatus">ALIGN PILOT FACE IN RETICLE</span>
+                </div>
+            </div>
+
+            <!-- Info text -->
+            <div id="cameraInfo">
+                <div class="brand-eyebrow">OFFICIAL AR FLIGHT LAB</div>
+                <h1 class="rb-title-lockup">
+                    <span class="rb-red-text">RED BULL</span>
+                    <span class="rb-silver-text">CAN FLYER</span>
+                </h1>
+                <div class="rb-wings-slogan">
+                    <span class="slogan-wing left">🪽</span>
+                    <span>GIVES YOU WIIINGS</span>
+                    <span class="slogan-wing right">🪽</span>
+                </div>
+                <p>Put your face in the cockpit, equip your official wings, and blast through the skies popping cans!</p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="camera-actions">
+                <button id="captureBtn" class="glow-btn primary-btn">
+                    <span class="btn-shine"></span>
+                    <span class="btn-icon">🚀</span>
+                    <span>EQUIP WINGS &amp; FLY</span>
+                </button>
+
+                <div class="secondary-actions">
+                    <label for="photoInput" id="uploadPhotoBtn" class="action-pill">
+                        <span>📁</span>
+                        <span>Upload Photo</span>
+                    </label>
+                    <input type="file" id="photoInput" accept="image/*" style="display: none;">
+
+                    <button id="demoPilotBtn" class="action-pill">
+                        <span>⚡</span>
+                        <span>Demo Pilot</span>
+                    </button>
+                </div>
+            </div>
+
+            <div id="cameraError" class="error-banner">
+                <span class="error-icon">⚠️</span>
+                <span>Camera access not available. Use <strong>Upload Photo</strong> or <strong>Demo Pilot</strong> to play right now!</span>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- =========================
+         GAME SCREEN
+    ========================== -->
+    <section id="gameScreen">
+        <!-- Dynamic Atmosphere Sky -->
+        <div id="sky">
+            <div class="sun-glare"></div>
+            <div class="aurora-glow"></div>
+        </div>
+
+        <!-- Parallax Animated Drifting Clouds -->
+        <div id="cloudLayer">
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="cloud cloud3"></div>
+            <div class="cloud cloud4"></div>
+            <div class="cloud cloud5"></div>
+            <div class="cloud cloud6"></div>
+        </div>
+
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- TOP HUD -->
+        <div id="topUI">
+            <div id="gameTitle">
+                <div class="brand-crest-wrapper">
+                    <svg class="rb-crest-svg" viewBox="0 0 42 28" fill="none">
+                        <!-- Golden Sun -->
+                        <circle cx="21" cy="14" r="9" fill="#ffcc00"/>
+                        <!-- Red Wings Left -->
+                        <path d="M2 7 C9 8, 14 11, 17 14 C13 14, 8 13, 3 10 Z" fill="#ea0029"/>
+                        <path d="M4 11 C10 12, 14 14, 18 16 C14 16, 9 16, 5 14 Z" fill="#ea0029"/>
+                        <path d="M8 15 C12 16, 15 17, 19 18 C15 18, 11 18, 8 17 Z" fill="#ea0029"/>
+                        <!-- Red Wings Right -->
+                        <path d="M40 7 C33 8, 28 11, 25 14 C29 14, 34 13, 39 10 Z" fill="#ea0029"/>
+                        <path d="M38 11 C32 12, 28 14, 24 16 C28 16, 33 16, 37 14 Z" fill="#ea0029"/>
+                        <path d="M34 15 C30 16, 27 17, 23 18 C27 18, 31 18, 34 17 Z" fill="#ea0029"/>
+                    </svg>
+                </div>
+                <div class="title-copy">
+                    <div class="title-brand-row">
+                        <span class="title-brand-red">RED BULL</span>
+                        <span class="title-brand-silver">CAN FLYER</span>
+                    </div>
+                    <div class="title-sub-slogan">GIVES YOU WIIINGS</div>
+                </div>
+            </div>
+
+            <!-- Red Bull Wings Power Gauge -->
+            <div id="wingsPowerMeter" class="wings-meter">
+                <div class="meter-label-row">
+                    <span class="meter-title">⚡ WINGS ENERGY</span>
+                    <span id="meterPercent" class="meter-value">100%</span>
+                </div>
+                <div class="meter-track">
+                    <div id="meterBar" class="meter-fill"></div>
+                </div>
+            </div>
+
+            <div id="stats">
+                <div class="stat" id="canStatCard">
+                    <span class="stat-icon">🥫</span>
+                    <div class="stat-info">
+                        <span class="stat-label">CANS</span>
+                        <span id="canCount" class="stat-value">0</span>
+                    </div>
+                </div>
+
+                <div class="stat" id="clickStatCard">
+                    <span class="stat-icon">🎯</span>
+                    <div class="stat-info">
+                        <span class="stat-label">POPPED</span>
+                        <span id="clickCount" class="stat-value">0</span>
+                    </div>
+                </div>
+
+                <div class="stat" id="comboCard">
+                    <span class="stat-icon combo-flame">🔥</span>
+                    <div class="stat-info">
+                        <span class="stat-label">COMBO</span>
+                        <span id="comboCount" class="stat-value">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FLIGHT STATUS MESSAGE -->
+        <div id="gameMessage">
+            <div class="msg-racing-stripe"></div>
+            <span class="msg-dot"></span>
+            <span class="msg-text">POINT WITH FINGER GUN 👉 OR CLICK CAN TO POP!</span>
+        </div>
+
+        <!-- BOTTOM CONTROLS -->
+        <div id="bottomUI">
+            <button id="newCanButton" class="action-btn launch-btn">
+                <span class="btn-shine"></span>
+                <span class="btn-icon">🥫</span>
+                <span>LAUNCH CAN</span>
+            </button>
+
+            <button id="frenzyButton" class="action-btn frenzy-btn">
+                <span class="btn-icon">⚡</span>
+                <span>FRENZY x3</span>
+            </button>
+
+            <button id="cameraButton" class="action-btn glass-btn">
+                <span>📷 RETAKE</span>
+            </button>
+
+            <button id="muteButton" class="action-btn glass-btn mute-btn">
+                <span>🔊 SOUND</span>
+            </button>
+        </div>
+
+        <!-- PICTURE-IN-PICTURE (PiP) FLIGHT CAMERA -->
+        <div id="pipContainer">
+            <div class="pip-racing-bar"></div>
+            <div class="pip-header">
+                <div class="pip-header-left">
+                    <span class="pip-live-dot"></span>
+                    <span class="pip-title">RADAR FLIGHT CAM</span>
+                </div>
+                <button id="pipToggleBtn" class="pip-toggle-btn" title="Toggle Cam">─</button>
+            </div>
+            <div class="pip-body" id="pipBody">
+                <canvas id="pipCanvas"></canvas>
+                <div id="pipStatusText" class="pip-status-badge">CAMERA STARTING...</div>
+            </div>
+        </div>
+
+        <!-- SCREEN FLASH EFFECT -->
+        <div id="flash"></div>
+    </section>
+
+</div>
+
+<!-- MediaPipe Hands & Camera Utils -->
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+
+<!-- Game Scripts -->
+<script src="js/audio.js"></script>
+<script src="js/effects.js"></script>
+<script src="js/camera.js"></script>
+<script src="js/cans.js"></script>
+<script src="js/handTracker.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
