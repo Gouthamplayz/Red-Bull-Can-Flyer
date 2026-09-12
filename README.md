@@ -53,26 +53,23 @@ Visit \`[http://127.0.0.1:5500/index.html](http://127.0.0.1:5500/index.html)\` i
 📁 Project Structure
 
 CAN FLYER/
-
-├── index.html          # Main web page and UI layout
-
-├── css/
-
-│   ├── style.css       # Red Bull design tokens & colors
-│   ├── camera.css      # Pilot scanner & onboarding card styles
-│   └── game.css        # Flight arena, HUD telemetry & button styles
-├── js/
-│   ├── main.js         # App entry point & button clicks
-│   ├── game.js         # Game loop, combo scoring & canvas updates
-│   ├── cans.js         # Can physics, face photo & flapping wings
-│   ├── handTracker.js  # MediaPipe AI finger-gun camera tracking
-│   ├── camera.js       # Webcam capture & photo upload (in-memory only)
-│   ├── effects.js      # Pop explosions, lasers & comic bubbles
-│   └── audio.js        # Voice playback (rbv.mp3) & sound FX
-├── assets/
-│   ├── rbc.png         # Authentic Red Bull can graphic
-│   └── rbv.mp3         # "Red Bull gives you wings!" voice clip
-└── README.md           # Project guide
+    ├── index.html          # Main web page and UI layout
+    ├── css/
+    │   ├── style.css       # Red Bull design tokens & colors
+    │   ├── camera.css      # Pilot scanner & onboarding card styles
+    │   └── game.css        # Flight arena, HUD telemetry & button styles
+    ├── js/
+    │   ├── main.js         # App entry point & button clicks
+    │   ├── game.js         # Game loop, combo scoring & canvas updates
+    │   ├── cans.js         # Can physics, face photo & flapping wings
+    │   ├── handTracker.js  # MediaPipe AI finger-gun camera tracking
+    │   ├── camera.js       # Webcam capture & photo upload (in-memory only)
+    │   ├── effects.js      # Pop explosions, lasers & comic bubbles
+    │   └── audio.js        # Voice playback (rbv.mp3) & sound FX
+    ├── assets/
+    │   ├── rbc.png         # Authentic Red Bull can graphic
+    │   └── rbv.mp3         # "Red Bull gives you wings!" voice clip
+    └── README.md           # Project guide
 
 
 
