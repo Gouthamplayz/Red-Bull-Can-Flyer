@@ -1,40 +1,13 @@
 ============================================================================================================================================================
 🥫 Red Bull Can Flyer — Gives You Wiiings 🪽
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Team Members
+Dhyan Rajesh John  =dhyanrajeshjohn 
+Goutham Krishna MM =gouthaman
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Project Description
 A fast, fun AR web useless game where your face flies inside an authentic Red Bull can equipped with flapping cartoon wings! Pop flying cans by clicking them or using AI Finger-Gun camera gestures (`👉` point to aim, `💥` drop thumb to shoot).
-
----
-
-🚀 Quick Start
-
-
-
-
-Visit https://gouthamplayz.github.io/Red-Bull-Can-Flyer/ in your browser.
-```
----
-
-🎮 How to Play
-
-1.Equip Photo/Face:
-   Allow webcam access to frame your face in the reticle and click **`🚀 EQUIP WINGS & FLY`**.
-   No camera? Click `📁 Upload Photo` or choose `⚡ Demo Pilot`.
-
-2.Pop Cans (2 Ways):
-   Click / Tap: Click any flying can to pop it.
-   Finger-Gun Gesture (`👉` + `💥`)**:
-   Raise your hand like a gun (index finger pointed, thumb up, other fingers curled).
-   Move your finger to aim the crosshair over a flying can.
-   Drop your thumb downward to fire a laser and pop the can!
-
-3.Cockpit Buttons:
-   Launch Can: Spawns another flying can.
-   Frenzy x3: Launches 3 cans rapidly for high combos.
-   Retake: Return to the camera to change pilot.
-   Sound: Toggle game audio on/off.
-
----
-
+------------------------------------------------------------------------------------------------------------------------------------------------------------
 📁 Project Structure
 
 CAN FLYER/
@@ -55,8 +28,32 @@ CAN FLYER/
 │   ├── rbc.png         # Authentic Red Bull can graphic
 │   └── rbv.mp3         # "Red Bull gives you wings!" voice clip
 └── README.md           # Project guide
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+Tech Stack
+*List OF language : HTML, CSS, JavaScript.
+*Frameworks :Zero Frameworks (Vanilla Web Tech)
+*No Hardware Software Project
+*API :Hand landmarks detection
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+🚀 Quick Start
+Visit https://gouthamplayz.github.io/Red-Bull-Can-Flyer/ in your browser.
 
+🎮 How to Play
 
-make it little more easy
+1.Equip Photo/Face:
+   Allow webcam access to frame your face in the reticle and click **`🚀 EQUIP WINGS & FLY`**.
+   No camera? Click `📁 Upload Photo` or choose `⚡ Demo Pilot`.
 
+2.Pop Cans (2 Ways):
+   Click / Tap: Click any flying can to pop it.
+   Finger-Gun Gesture (`👉` + `💥`)**:
+   Raise your hand like a gun (index finger pointed, thumb up, other fingers curled).
+   Move your finger to aim the crosshair over a flying can.
+   Drop your thumb downward to fire a laser and pop the can!
+
+3.Cockpit Buttons:
+   Launch Can: Spawns another flying can.
+   Frenzy x3: Launches 3 cans rapidly for high combos.
+   Retake: Return to the camera to change pilot.
+   Sound: Toggle game audio on/off.
 ============================================================================================================================================================
