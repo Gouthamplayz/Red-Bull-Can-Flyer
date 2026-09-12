@@ -39,23 +39,22 @@ Tech Stack
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 🚀 Quick Start
 Visit https://gouthamplayz.github.io/Red-Bull-Can-Flyer/ in your browser.
-
+```
 🎮 How to Play
 
 1.Equip Photo/Face:
    Allow webcam access to frame your face in the reticle and click **`🚀 EQUIP WINGS & FLY`**.
    No camera? Click `📁 Upload Photo` or choose `⚡ Demo Pilot`.
-
 2.Pop Cans (2 Ways):
    Click / Tap: Click any flying can to pop it.
    Finger-Gun Gesture (`👉` + `💥`)**:
    Raise your hand like a gun (index finger pointed, thumb up, other fingers curled).
    Move your finger to aim the crosshair over a flying can.
    Drop your thumb downward to fire a laser and pop the can!
-
 3.Cockpit Buttons:
    Launch Can: Spawns another flying can.
    Frenzy x3: Launches 3 cans rapidly for high combos.
    Retake: Return to the camera to change pilot.
    Sound: Toggle game audio on/off.
+```
 ============================================================================================================================================================
