@@ -7,14 +7,10 @@ A fast, fun AR web useless game where your face flies inside an authentic Red Bu
 
 🚀 Quick Start
 
-Open the project in your browser using any local server:
-
-VS Code
-Right-click index.html -> Open with Live Server
 
 ```
 
-Visit `http://127.0.0.1:5500/index.html` in your browser.
+Visit 'https://gouthamplayz.github.io/Red-Bull-Can-Flyer/` in your browser.
 
 ---
 
