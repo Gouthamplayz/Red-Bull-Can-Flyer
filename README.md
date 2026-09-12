@@ -8,7 +8,7 @@ Goutham Krishna MM =gouthaman
 Project Description
 A fast, fun AR web useless game where your face flies inside an authentic Red Bull can equipped with flapping cartoon wings! Pop flying cans by clicking them or using AI Finger-Gun camera gestures (`👉` point to aim, `💥` drop thumb to shoot).
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
-'''
+```
 📁 Project Structure
 
 CAN FLYER/
@@ -29,6 +29,7 @@ CAN FLYER/
 │   ├── rbc.png         # Authentic Red Bull can graphic
 │   └── rbv.mp3         # "Red Bull gives you wings!" voice clip
 └── README.md           # Project guide
+```
 ------------------------------------------------------------------------------------------------------------------------------------------------------------
 Tech Stack
 *List OF language : HTML, CSS, JavaScript.
