@@ -1,0 +1,531 @@
+/* ===================================================
+   CAMERA / FLIGHT LAB SCREEN - RED BULL WINGS EDITION
+   =================================================== */
+
+#cameraScreen {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px 16px;
+    background: radial-gradient(ellipse at 50% 25%, #051b47 0%, #001033 55%, #000614 100%);
+    overflow-y: auto;
+}
+
+/* Ambient Red Bull Atmosphere Lighting */
+.ambient-glow {
+    position: absolute;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(140px);
+    opacity: 0.32;
+}
+
+.ambient-glow.cyan {
+    top: -120px;
+    left: 5%;
+    background: var(--rb-blue-vibrant);
+}
+
+.ambient-glow.red {
+    bottom: -120px;
+    right: 5%;
+    background: var(--rb-red);
+    opacity: 0.28;
+}
+
+.ambient-glow.yellow {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    background: var(--rb-yellow);
+    opacity: 0.12;
+    filter: blur(120px);
+}
+
+/* Flight Deck Card */
+#cameraCard {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 26px;
+    background: linear-gradient(180deg, rgba(0, 24, 66, 0.88) 0%, rgba(0, 14, 40, 0.92) 100%);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1.5px solid var(--rb-silver-border);
+    border-radius: 32px;
+    box-shadow: 
+        0 24px 60px rgba(0, 6, 18, 0.85),
+        0 0 45px rgba(0, 60, 180, 0.3),
+        inset 0 1px 2px rgba(255, 255, 255, 0.45);
+    text-align: center;
+    z-index: 2;
+    overflow: hidden;
+    animation: cardAppear 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Red Bull Racing Dual-Stripe (Red + Yellow) across card top */
+.card-racing-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--rb-racing-stripe);
+    box-shadow: 0 0 12px rgba(234, 0, 41, 0.7);
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(22px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Flight Badge - Red Bull Racing Air Deck */
+.flight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 18px;
+    background: rgba(0, 40, 110, 0.5);
+    border: 1.5px solid rgba(220, 235, 250, 0.4);
+    border-radius: 24px;
+    font-family: var(--font-race);
+    font-size: 13px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1.8px;
+    color: var(--rb-silver-100);
+    margin-bottom: 18px;
+    box-shadow: 0 4px 18px rgba(0, 70, 200, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.rb-mini-crest {
+    width: 22px;
+    height: 15px;
+    filter: drop-shadow(0 0 4px rgba(255, 204, 0, 0.6));
+}
+
+.live-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rb-yellow);
+    box-shadow: 0 0 10px var(--rb-yellow);
+    animation: livePulse 1.4s infinite ease-in-out;
+}
+
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.35; transform: scale(0.75); }
+}
+
+/* Video Container & Cockpit Reticle */
+#videoContainer {
+    position: relative;
+    width: min(85vw, 400px);
+    aspect-ratio: 4 / 3;
+    border-radius: 24px;
+    overflow: hidden;
+    background: #000814;
+    border: 2.5px solid rgba(220, 235, 250, 0.7);
+    box-shadow: 
+        0 12px 40px rgba(0, 6, 20, 0.8),
+        0 0 35px rgba(0, 92, 230, 0.4),
+        inset 0 0 35px rgba(0, 30, 90, 0.5);
+}
+
+#cameraVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1);
+}
+
+/* Reticle / Face Guide - Red Bull Air Race Aviation Target */
+#cameraGuide {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(52vw, 210px);
+    aspect-ratio: 1;
+    border: 2.5px dashed rgba(255, 204, 0, 0.85);
+    border-radius: 50%;
+    pointer-events: none;
+    box-shadow: 0 0 35px rgba(234, 0, 41, 0.35), inset 0 0 25px rgba(255, 204, 0, 0.2);
+    animation: reticlePulse 3s infinite ease-in-out;
+}
+
+@keyframes reticlePulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+        border-color: rgba(255, 204, 0, 0.95);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.04);
+        border-color: rgba(255, 255, 255, 0.95);
+    }
+}
+
+.guide-ring-outer {
+    position: absolute;
+    inset: -14px;
+    border: 1.5px solid rgba(220, 235, 250, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--rb-yellow);
+    border-right-color: var(--rb-red);
+    border-bottom-color: var(--rb-blue-electric);
+    animation: ringSpin 10s linear infinite;
+}
+
+@keyframes ringSpin {
+    to { transform: rotate(360deg); }
+}
+
+/* Aviation Crosshair & Horizon Pitch Marks */
+.guide-crosshairs {
+    position: absolute;
+    inset: 0;
+}
+
+.guide-crosshairs::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -20px;
+    width: 24px;
+    height: 2px;
+    background: var(--rb-yellow);
+    box-shadow: 0 0 8px var(--rb-yellow);
+}
+
+.guide-crosshairs::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 24px;
+    height: 2px;
+    background: var(--rb-yellow);
+    box-shadow: 0 0 8px var(--rb-yellow);
+}
+
+.guide-scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--rb-yellow), var(--rb-red-bright), transparent);
+    box-shadow: 0 0 14px var(--rb-yellow);
+    animation: scanSweep 2.2s ease-in-out infinite alternate;
+}
+
+@keyframes scanSweep {
+    0% { top: 12%; opacity: 0.3; }
+    50% { opacity: 1; }
+    100% { top: 88%; opacity: 0.3; }
+}
+
+/* Corner HUD Brackets - Polished Silver with Red Racing Accents */
+.hud-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    pointer-events: none;
+    filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.7));
+}
+
+.hud-corner::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--rb-red);
+}
+
+.hud-corner.top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.hud-corner.top-left::after { top: -3px; left: -3px; }
+
+.hud-corner.top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.hud-corner.top-right::after { top: -3px; right: -3px; }
+
+.hud-corner.bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.hud-corner.bottom-left::after { bottom: -3px; left: -3px; }
+
+.hud-corner.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+.hud-corner.bottom-right::after { bottom: -3px; right: -3px; }
+
+.hud-status-chip {
+    position: absolute;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 16px;
+    background: rgba(0, 14, 38, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid rgba(255, 204, 0, 0.6);
+    border-radius: 20px;
+    font-family: var(--font-race);
+    font-size: 12px;
+    font-weight: 800;
+    font-style: italic;
+    color: var(--rb-yellow);
+    letter-spacing: 1.2px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6), 0 0 12px rgba(255, 204, 0, 0.3);
+}
+
+/* Camera Info & Red Bull Typography */
+#cameraInfo {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.brand-eyebrow {
+    font-family: var(--font-race);
+    font-size: 11px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 3px;
+    color: var(--rb-yellow);
+    margin-bottom: 4px;
+    text-shadow: 0 0 10px var(--rb-yellow-glow);
+}
+
+.rb-title-lockup {
+    font-family: var(--font-race);
+    font-size: 34px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.rb-red-text {
+    color: var(--rb-red);
+    text-shadow: 0 0 20px var(--rb-red-glow), 0 2px 4px rgba(0, 0, 0, 0.8);
+    position: relative;
+}
+
+.rb-silver-text {
+    background: var(--rb-silver-chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0, 40, 120, 0.6));
+}
+
+/* The Legendary Red Bull Slogan */
+.rb-wings-slogan {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 16px;
+    background: rgba(255, 204, 0, 0.12);
+    border: 1px solid rgba(255, 204, 0, 0.45);
+    border-radius: 16px;
+    font-family: var(--font-race);
+    font-size: 13px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: var(--rb-yellow);
+    margin-bottom: 10px;
+    text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.slogan-wing {
+    font-size: 15px;
+    animation: wingFlapSubtle 1.8s ease-in-out infinite alternate;
+}
+
+.slogan-wing.right {
+    transform: scaleX(-1);
+}
+
+@keyframes wingFlapSubtle {
+    from { transform: rotate(-5deg); }
+    to { transform: rotate(8deg); }
+}
+
+#cameraInfo p {
+    color: var(--text-secondary);
+    font-size: 13.5px;
+    line-height: 1.45;
+    max-width: 400px;
+}
+
+/* Actions */
+.camera-actions {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.glow-btn {
+    position: relative;
+    overflow: hidden;
+    padding: 16px 36px;
+    border-radius: 28px;
+    font-family: var(--font-race);
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    width: 100%;
+    max-width: 340px;
+}
+
+/* Primary Button - High-Energy Red Bull Crimson & Gold Livery */
+.primary-btn {
+    background: var(--rb-red-chrome);
+    box-shadow: 
+        0 8px 32px var(--rb-red-glow),
+        0 0 20px rgba(255, 204, 0, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.85);
+    transform: skewX(-4deg);
+}
+
+.primary-btn > * {
+    transform: skewX(4deg);
+}
+
+.primary-btn:hover {
+    transform: skewX(-4deg) translateY(-2px) scale(1.02);
+    box-shadow: 
+        0 14px 44px var(--rb-red-glow),
+        0 0 30px rgba(255, 204, 0, 0.6),
+        inset 0 1px 3px rgba(255, 255, 255, 0.9);
+    border-color: var(--rb-yellow);
+}
+
+.primary-btn:active {
+    transform: skewX(-4deg) translateY(1px) scale(0.98);
+}
+
+.btn-shine {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
+    transform: skewX(-20deg);
+    animation: btnSweep 3.5s infinite ease-in-out;
+}
+
+@keyframes btnSweep {
+    0%, 65% { left: -100%; }
+    100% { left: 200%; }
+}
+
+.secondary-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.action-pill {
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-family: var(--font-race);
+    font-size: 14px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: var(--rb-silver-200);
+    background: rgba(220, 235, 250, 0.1);
+    border: 1.5px solid rgba(220, 235, 250, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    transform: skewX(-3deg);
+}
+
+.action-pill > * {
+    transform: skewX(3deg);
+}
+
+.action-pill:hover {
+    color: #ffffff;
+    background: rgba(0, 92, 230, 0.35);
+    border-color: var(--rb-yellow);
+    transform: skewX(-3deg) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 92, 230, 0.4), 0 0 12px rgba(255, 204, 0, 0.3);
+}
+
+.error-banner {
+    display: none;
+    margin-top: 16px;
+    padding: 12px 18px;
+    border-radius: 16px;
+    background: rgba(180, 0, 30, 0.4);
+    border: 1.5px solid var(--rb-red);
+    color: #ffe6eb;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 600px) {
+    #cameraCard {
+        padding: 24px 16px;
+        border-radius: 26px;
+    }
+
+    .rb-title-lockup {
+        font-size: 28px;
+    }
+
+    #cameraInfo p {
+        font-size: 12.5px;
+    }
+
+    .glow-btn {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+}

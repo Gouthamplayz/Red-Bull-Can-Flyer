@@ -1,0 +1,122 @@
+/* ===================================================
+   CAN FACE FLYER - RED BULL WINGS EDITION DESIGN SYSTEM
+   =================================================== */
+
+:root {
+    /* Red Bull Midnight Navy Arena */
+    --bg-dark: #000a18;
+    --bg-card: rgba(0, 18, 51, 0.78);
+
+    /* Red Bull Royal & Electric Blues */
+    --rb-navy-950: #000610;
+    --rb-navy-900: #000c24;
+    --rb-navy-800: #00153d;
+    --rb-navy-700: #00225c;
+    --rb-blue-royal: #003bb3;
+    --rb-blue-vibrant: #005ce6;
+    --rb-blue-electric: #0077ff;
+    --rb-blue-sky: #00d4ff;
+    --rb-blue-glow: rgba(0, 92, 230, 0.45);
+
+    /* Iconic Red Bull Crimson Red */
+    --rb-red: #ea0029;
+    --rb-red-bright: #ff123d;
+    --rb-red-dark: #b0001e;
+    --rb-red-glow: rgba(234, 0, 41, 0.55);
+    --rb-red-chrome: linear-gradient(135deg, #ff2e58 0%, #ea0029 48%, #a0001a 100%);
+
+    /* Iconic Red Bull Golden Sun Yellow */
+    --rb-yellow: #ffcc00;
+    --rb-yellow-bright: #ffe033;
+    --rb-yellow-dark: #cc9900;
+    --rb-yellow-glow: rgba(255, 204, 0, 0.5);
+    --rb-gold-chrome: linear-gradient(135deg, #fff275 0%, #ffcc00 48%, #cc9400 100%);
+
+    /* Red Bull Metallic Silver & Chrome Platinum */
+    --rb-silver-100: #ffffff;
+    --rb-silver-200: #f2f6fc;
+    --rb-silver-300: #dce6f2;
+    --rb-silver-400: #afc4da;
+    --rb-silver-500: #7b95b2;
+    --rb-silver-border: rgba(220, 230, 242, 0.38);
+    --rb-silver-border-glow: rgba(255, 255, 255, 0.75);
+    --rb-silver-glow: rgba(220, 230, 242, 0.35);
+    --rb-silver-chrome: linear-gradient(135deg, #ffffff 0%, #e6effa 32%, #a8c1db 70%, #ffffff 100%);
+
+    /* Red Bull Racing Dual Stripe (Red + Yellow) */
+    --rb-racing-stripe: linear-gradient(90deg, #ea0029 0%, #ea0029 50%, #ffcc00 50%, #ffcc00 100%);
+    --rb-racing-stripe-v: linear-gradient(180deg, #ea0029 0%, #ea0029 50%, #ffcc00 50%, #ffcc00 100%);
+
+    /* Text */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(230, 240, 252, 0.88);
+    --text-muted: rgba(175, 196, 218, 0.65);
+
+    /* Glassmorphism & Carbon */
+    --glass-bg: rgba(0, 16, 44, 0.76);
+    --glass-border: rgba(220, 230, 242, 0.32);
+    --glass-border-silver: rgba(255, 255, 255, 0.65);
+    --glass-shadow: 0 20px 50px rgba(0, 8, 22, 0.75);
+    --carbon-pattern: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.22) 0px, rgba(0, 0, 0, 0.22) 2px, transparent 2px, transparent 4px);
+
+    /* Typography */
+    --font-race: 'Barlow Condensed', 'Outfit', -apple-system, sans-serif;
+    --font-main: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'Space Grotesk', monospace;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: var(--font-main);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button {
+    font-family: var(--font-race);
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+#gameCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    touch-action: none;
+}
+
+#flash {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 1) 0%, rgba(255, 204, 0, 0.6) 40%, rgba(234, 0, 41, 0.4) 100%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 50;
+}

@@ -1,0 +1,769 @@
+/* ===================================================
+   GAME SCREEN - RED BULL AIR ARENA & FLIGHT COCKPIT
+   =================================================== */
+
+#gameScreen {
+    position: absolute;
+    inset: 0;
+    display: none;
+    overflow: hidden;
+    background: #000814;
+}
+
+/* Red Bull Stratos Alpine Flight Sky */
+#sky {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        180deg,
+        #000814 0%,
+        #001438 20%,
+        #002b7a 48%,
+        #084fb5 76%,
+        #659ee0 100%
+    );
+}
+
+.sun-glare {
+    position: absolute;
+    top: -140px;
+    right: -100px;
+    width: 520px;
+    height: 520px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.6) 0%,
+        rgba(255, 220, 100, 0.3) 30%,
+        rgba(0, 92, 230, 0.15) 55%,
+        transparent 72%
+    );
+    pointer-events: none;
+    filter: blur(40px);
+}
+
+.aurora-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 100%, rgba(180, 220, 255, 0.22), transparent 70%);
+    pointer-events: none;
+}
+
+/* Clouds Layer with Smooth Parallax Drift */
+#cloudLayer {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.cloud {
+    position: absolute;
+    border-radius: 100px;
+    background: rgba(235, 245, 255, 0.28);
+    filter: blur(4px);
+    will-change: transform;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: inherit;
+}
+
+.cloud1 {
+    width: 220px;
+    height: 65px;
+    top: 14%;
+    left: -250px;
+    animation: driftCloud 38s linear infinite;
+}
+.cloud1::before { width: 90px; height: 90px; left: 30px; top: -45px; }
+.cloud1::after { width: 110px; height: 110px; right: 30px; top: -55px; }
+
+.cloud2 {
+    width: 280px;
+    height: 80px;
+    top: 32%;
+    left: -320px;
+    opacity: 0.7;
+    animation: driftCloud 55s linear infinite 8s;
+}
+.cloud2::before { width: 110px; height: 110px; left: 40px; top: -55px; }
+.cloud2::after { width: 130px; height: 130px; right: 45px; top: -65px; }
+
+.cloud3 {
+    width: 170px;
+    height: 52px;
+    top: 52%;
+    left: -200px;
+    opacity: 0.55;
+    animation: driftCloud 48s linear infinite 18s;
+}
+.cloud3::before { width: 70px; height: 70px; left: 25px; top: -35px; }
+.cloud3::after { width: 85px; height: 85px; right: 25px; top: -42px; }
+
+.cloud4 {
+    width: 190px;
+    height: 56px;
+    top: 70%;
+    left: -220px;
+    opacity: 0.45;
+    animation: driftCloud 42s linear infinite 4s;
+}
+.cloud4::before { width: 80px; height: 80px; left: 30px; top: -40px; }
+.cloud4::after { width: 90px; height: 90px; right: 30px; top: -45px; }
+
+.cloud5 {
+    width: 310px;
+    height: 90px;
+    top: 8%;
+    left: -350px;
+    opacity: 0.35;
+    animation: driftCloud 75s linear infinite 25s;
+}
+.cloud5::before { width: 130px; height: 130px; left: 50px; top: -65px; }
+.cloud5::after { width: 150px; height: 150px; right: 50px; top: -75px; }
+
+.cloud6 {
+    width: 150px;
+    height: 45px;
+    top: 42%;
+    left: -180px;
+    opacity: 0.6;
+    animation: driftCloud 62s linear infinite 35s;
+}
+.cloud6::before { width: 60px; height: 60px; left: 20px; top: -30px; }
+.cloud6::after { width: 75px; height: 75px; right: 20px; top: -38px; }
+
+@keyframes driftCloud {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(100vw + 400px)); }
+}
+
+/* ===================================================
+   TOP HUD - RED BULL RACING TELEMETRY
+   =================================================== */
+
+#topUI {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 24px;
+    pointer-events: none;
+    gap: 16px;
+}
+
+#topUI > * {
+    pointer-events: auto;
+}
+
+/* Red Bull Brand Crest & Header */
+#gameTitle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 18px;
+    background: rgba(0, 18, 48, 0.82);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid var(--rb-silver-border);
+    border-radius: 24px;
+    box-shadow: 
+        0 8px 28px rgba(0, 6, 20, 0.55),
+        inset 0 1px 2px rgba(255, 255, 255, 0.4);
+    transform: skewX(-4deg);
+    position: relative;
+    overflow: hidden;
+}
+
+#gameTitle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--rb-racing-stripe-v);
+}
+
+#gameTitle > * {
+    transform: skewX(4deg);
+}
+
+.brand-crest-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rb-crest-svg {
+    width: 38px;
+    height: 26px;
+    filter: drop-shadow(0 0 6px rgba(255, 204, 0, 0.7));
+}
+
+.title-copy {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.title-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-race);
+    font-size: 20px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 0.8px;
+    line-height: 1.1;
+}
+
+.title-brand-red {
+    color: var(--rb-red);
+    text-shadow: 0 0 12px var(--rb-red-glow);
+}
+
+.title-brand-silver {
+    background: var(--rb-silver-chrome);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.8));
+}
+
+.title-sub-slogan {
+    font-family: var(--font-race);
+    font-size: 10px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1.8px;
+    color: var(--rb-yellow);
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.5);
+}
+
+/* Wings Energy / Overdrive Telemetry Gauge */
+.wings-meter {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 170px;
+    padding: 6px 14px;
+    background: rgba(0, 16, 42, 0.75);
+    backdrop-filter: blur(16px);
+    border: 1.5px solid rgba(255, 204, 0, 0.4);
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
+    transform: skewX(-4deg);
+}
+
+.wings-meter > * {
+    transform: skewX(4deg);
+}
+
+.meter-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-race);
+    font-size: 11px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: var(--rb-yellow);
+}
+
+.meter-value {
+    color: #ffffff;
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.meter-track {
+    width: 100%;
+    height: 7px;
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.meter-fill {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #ea0029 0%, #ffcc00 80%, #ffffff 100%);
+    box-shadow: 0 0 10px var(--rb-yellow);
+    transition: width 0.3s ease;
+    animation: meterPulse 2s infinite ease-in-out alternate;
+}
+
+@keyframes meterPulse {
+    from { filter: brightness(1); }
+    to { filter: brightness(1.3); }
+}
+
+/* Stats Dashboard - Red Bull Cockpit Telemetry */
+#stats {
+    display: flex;
+    gap: 10px;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px;
+    border-radius: 20px;
+    background: rgba(0, 18, 48, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1.5px solid var(--rb-silver-border);
+    box-shadow: 0 8px 24px rgba(0, 6, 20, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    transform: skewX(-4deg);
+}
+
+.stat > * {
+    transform: skewX(4deg);
+}
+
+.stat:hover {
+    transform: skewX(-4deg) translateY(-2px);
+    border-color: var(--rb-yellow);
+    box-shadow: 0 10px 30px rgba(0, 92, 230, 0.4), 0 0 15px rgba(255, 204, 0, 0.3);
+}
+
+.stat-icon {
+    font-size: 18px;
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.stat-label {
+    font-family: var(--font-race);
+    font-size: 10px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1.2px;
+    color: var(--rb-silver-400);
+}
+
+.stat-value {
+    font-family: var(--font-mono);
+    font-size: 17px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+#clickStatCard .stat-value {
+    color: #ff94a6;
+    text-shadow: 0 0 10px var(--rb-red-glow);
+}
+
+/* Combo Card Dynamics */
+#comboCard.active-combo {
+    border-color: var(--rb-yellow);
+    box-shadow: 0 0 28px var(--rb-yellow-glow), inset 0 0 12px rgba(255, 204, 0, 0.3);
+    background: rgba(30, 18, 0, 0.85);
+}
+
+#comboCard.active-combo .stat-value {
+    color: var(--rb-yellow);
+}
+
+#comboCard.fire-combo {
+    border-color: var(--rb-red);
+    box-shadow: 0 0 35px var(--rb-red-glow), 0 0 20px var(--rb-yellow);
+    background: rgba(50, 0, 15, 0.9);
+    animation: comboPulse 0.4s infinite alternate;
+}
+
+#comboCard.fire-combo .stat-value {
+    color: #ffffff;
+    text-shadow: 0 0 12px var(--rb-yellow);
+}
+
+@keyframes comboPulse {
+    from { transform: skewX(-4deg) scale(1); }
+    to { transform: skewX(-4deg) scale(1.08); }
+}
+
+/* ===================================================
+   FLIGHT STATUS MESSAGE - RED BULL PIT RADIO
+   =================================================== */
+
+#gameMessage {
+    position: absolute;
+    top: 86px;
+    left: 50%;
+    transform: translateX(-50%) skewX(-4deg);
+    z-index: 20;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 24px;
+    border-radius: 24px;
+    background: rgba(0, 18, 48, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1.5px solid rgba(255, 204, 0, 0.55);
+    box-shadow: 0 10px 32px rgba(0, 8, 26, 0.65), 0 0 20px rgba(234, 0, 41, 0.25);
+    font-family: var(--font-race);
+    font-size: 14px;
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: #ffffff;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+#gameMessage > * {
+    transform: skewX(4deg);
+}
+
+.msg-racing-stripe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--rb-racing-stripe-v);
+}
+
+.msg-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--rb-yellow);
+    box-shadow: 0 0 10px var(--rb-yellow);
+    animation: livePulse 1s infinite ease-in-out;
+}
+
+/* ===================================================
+   BOTTOM COMMAND BAR - RED BULL COCKPIT CONTROLS
+   =================================================== */
+
+#bottomUI {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 18px;
+    background: rgba(0, 14, 38, 0.82);
+    backdrop-filter: blur(28px);
+    -webkit-backdrop-filter: blur(28px);
+    border: 1.5px solid var(--rb-silver-border);
+    border-radius: 36px;
+    box-shadow: 
+        0 18px 52px rgba(0, 6, 20, 0.75),
+        0 0 30px rgba(0, 92, 230, 0.25),
+        inset 0 1px 2px rgba(255, 255, 255, 0.35);
+}
+
+.action-btn {
+    position: relative;
+    overflow: hidden;
+    padding: 12px 24px;
+    border-radius: 26px;
+    font-family: var(--font-race);
+    font-size: 15px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transform: skewX(-4deg);
+}
+
+.action-btn > * {
+    transform: skewX(4deg);
+}
+
+/* Launch Button - High-Octane Red Bull Crimson */
+.launch-btn {
+    background: var(--rb-red-chrome);
+    box-shadow: 
+        0 6px 26px var(--rb-red-glow),
+        0 0 16px rgba(255, 204, 0, 0.35),
+        inset 0 1px 2px rgba(255, 255, 255, 0.7);
+    border: 1.5px solid rgba(255, 255, 255, 0.85);
+}
+
+.launch-btn:hover {
+    transform: skewX(-4deg) translateY(-2px) scale(1.04);
+    box-shadow: 
+        0 10px 36px var(--rb-red-glow),
+        0 0 25px var(--rb-yellow),
+        inset 0 1px 3px rgba(255, 255, 255, 0.9);
+    border-color: var(--rb-yellow);
+}
+
+/* Frenzy Button - Red Bull Golden Sun Yellow */
+.frenzy-btn {
+    background: var(--rb-gold-chrome);
+    color: #001a40;
+    border: 1.5px solid #ffffff;
+    box-shadow: 
+        0 6px 26px var(--rb-yellow-glow),
+        inset 0 1px 2px rgba(255, 255, 255, 0.9);
+}
+
+.frenzy-btn:hover {
+    transform: skewX(-4deg) translateY(-2px) scale(1.04);
+    box-shadow: 
+        0 10px 34px var(--rb-yellow-glow),
+        0 0 25px rgba(255, 255, 255, 0.7);
+    filter: brightness(1.06);
+}
+
+.glass-btn {
+    background: rgba(220, 235, 250, 0.1);
+    border: 1.5px solid rgba(220, 235, 250, 0.32);
+    color: var(--rb-silver-200);
+}
+
+.glass-btn:hover {
+    color: #ffffff;
+    background: rgba(0, 92, 230, 0.35);
+    border-color: var(--rb-yellow);
+    transform: skewX(-4deg) translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 92, 230, 0.4), 0 0 12px rgba(255, 204, 0, 0.35);
+}
+
+.action-btn:active {
+    transform: skewX(-4deg) translateY(1px) scale(0.96);
+}
+
+.mute-btn.muted {
+    color: #8da5bf;
+    border-color: rgba(140, 165, 191, 0.4);
+}
+
+/* ===================================================
+   PICTURE-IN-PICTURE (PiP) FLIGHT CAMERA WIDGET
+   =================================================== */
+
+#pipContainer {
+    position: absolute;
+    bottom: 24px;
+    right: 24px;
+    z-index: 25;
+    width: 175px;
+    background: rgba(0, 14, 38, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1.5px solid var(--rb-silver-border);
+    border-radius: 20px;
+    box-shadow: 
+        0 14px 40px rgba(0, 6, 20, 0.75),
+        0 0 25px rgba(0, 92, 230, 0.3);
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pip-racing-bar {
+    width: 100%;
+    height: 3px;
+    background: var(--rb-racing-stripe);
+}
+
+#pipContainer.minimized .pip-body {
+    display: none;
+}
+
+.pip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 12px;
+    background: rgba(0, 22, 60, 0.88);
+    border-bottom: 1px solid rgba(220, 235, 250, 0.2);
+}
+
+.pip-header-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pip-live-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--rb-yellow);
+    box-shadow: 0 0 8px var(--rb-yellow);
+    animation: livePulse 1.4s infinite ease-in-out;
+}
+
+.pip-title {
+    font-family: var(--font-race);
+    font-size: 11px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 1.2px;
+    color: var(--rb-silver-200);
+}
+
+.pip-toggle-btn {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: var(--rb-silver-400);
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.pip-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+}
+
+.pip-body {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #000814;
+}
+
+#pipCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.pip-status-badge {
+    position: absolute;
+    bottom: 6px;
+    left: 6px;
+    right: 6px;
+    padding: 4px 6px;
+    border-radius: 10px;
+    font-family: var(--font-race);
+    font-size: 10px;
+    font-weight: 800;
+    font-style: italic;
+    text-align: center;
+    letter-spacing: 0.8px;
+    background: rgba(0, 12, 32, 0.9);
+    border: 1px solid rgba(220, 235, 250, 0.4);
+    color: var(--rb-silver-200);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    pointer-events: none;
+}
+
+.pip-status-badge.waiting {
+    color: var(--rb-yellow);
+    border-color: rgba(255, 204, 0, 0.6);
+}
+
+.pip-status-badge.aiming {
+    color: var(--rb-blue-sky);
+    border-color: rgba(0, 212, 255, 0.6);
+}
+
+.pip-status-badge.locked {
+    color: #ffffff;
+    border-color: var(--rb-red);
+    background: rgba(70, 0, 20, 0.95);
+    box-shadow: 0 0 12px var(--rb-red-glow);
+    animation: livePulse 0.4s infinite alternate;
+}
+
+/* ===================================================
+   RESPONSIVE OPTIMIZATIONS
+   =================================================== */
+
+@media (max-width: 820px) {
+    .wings-meter {
+        display: none;
+    }
+}
+
+@media (max-width: 680px) {
+    #topUI {
+        padding: 10px 14px;
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+
+    #gameTitle {
+        padding: 6px 14px;
+    }
+
+    .title-brand-row { font-size: 16px; }
+    .title-sub-slogan { font-size: 9px; }
+
+    #stats {
+        gap: 6px;
+    }
+
+    .stat {
+        padding: 6px 12px;
+        border-radius: 16px;
+        gap: 6px;
+    }
+
+    .stat-icon { font-size: 15px; }
+    .stat-label { font-size: 8.5px; }
+    .stat-value { font-size: 14px; }
+
+    #gameMessage {
+        top: 104px;
+        font-size: 12px;
+        padding: 6px 16px;
+    }
+
+    #bottomUI {
+        bottom: 14px;
+        padding: 6px 10px;
+        gap: 8px;
+        max-width: 96vw;
+        overflow-x: auto;
+    }
+
+    .action-btn {
+        padding: 10px 16px;
+        font-size: 13px;
+        border-radius: 20px;
+    }
+
+    #pipContainer {
+        bottom: 84px;
+        right: 12px;
+        width: 135px;
+    }
+}
