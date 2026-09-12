@@ -110,15 +110,15 @@ Allow camera access when prompted.
 Project Documentation
 Screenshots
 
-![Screenshot1](Add screenshot 1 here)
+![Screenshot 1](images/screenshot1.png)
 
 Main landing screen showing the Red Bull Can Flyer interface.
 
-![Screenshot2](Add screenshot 2 here)
+![Screenshot 1](images/screenshot2.png)
 
 Pilot scanner screen where the user captures or uploads their face.
 
-![Screenshot3](Add screenshot 3 here)
+![Screenshot 1](images/screenshot3.png)
 
 Flight arena showing flying cans, HUD telemetry and gameplay controls.
 
